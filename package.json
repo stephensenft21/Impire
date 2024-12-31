@@ -1,0 +1,39 @@
+{
+  "name": "impire",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "devNext": "NODE_ENV=development next dev",
+    "buildNext": "NODE_ENV=production next build",
+    "startNext": "NODE_ENV=production next start"
+  },
+  "dependencies": {
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.4.0",
+    "axios": "^1.7.9",
+    "firebase": "^11.1.0",
+    "framer-motion": "^11.15.0",
+    "ioredis": "^5.4.2",
+    "next": "15.1.2",
+    "next-auth": "^4.24.11",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "redis": "^4.7.0",
+    "stripe": "^17.5.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "22.10.2",
+    "@types/react": "19.0.2",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.2",
+    "json-server": "^1.0.0-beta.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}

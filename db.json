@@ -1,0 +1,143 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "T-Shirt",
+      "description": "Comfortable cotton T-shirt",
+      "price": 19.99,
+      "image": "tshirt.jpg",
+      "category": "clothing",
+      "stock": 100
+    },
+    {
+      "id": 2,
+      "name": "Water Bottle",
+      "description": "Stainless steel water bottle",
+      "price": 12.99,
+      "image": "bottle.jpg",
+      "category": "accessories",
+      "stock": 50
+    },
+    {
+      "id": 3,
+      "name": "Gym Bag",
+      "description": "Spacious gym bag with multiple compartments",
+      "price": 29.99,
+      "image": "gym_bag.jpg",
+      "category": "accessories",
+      "stock": 75
+    },
+    {
+      "id": 4,
+      "name": "Joggers",
+      "description": "Comfortable and breathable joggers for workouts",
+      "price": 34.99,
+      "image": "joggers.jpg",
+      "category": "clothing",
+      "stock": 80
+    },
+    {
+      "id": 5,
+      "name": "Resistance Bands",
+      "description": "Set of durable resistance bands for strength training",
+      "price": 19.99,
+      "image": "resistance_bands.jpg",
+      "category": "accessories",
+      "stock": 120
+    },
+    {
+      "id": 6,
+      "name": "Yoga Mat",
+      "description": "Non-slip yoga mat for comfort and stability",
+      "price": 24.99,
+      "image": "yoga_mat.jpg",
+      "category": "accessories",
+      "stock": 60
+    },
+    {
+      "id": 7,
+      "name": "Sports Water Bottle",
+      "description": "Leak-proof water bottle with easy carry handle",
+      "price": 15.99,
+      "image": "sports_bottle.jpg",
+      "category": "accessories",
+      "stock": 90
+    },
+    {
+      "id": 8,
+      "name": "Sweatband",
+      "description": "Absorbent sweatband for workouts",
+      "price": 5.99,
+      "image": "sweatband.jpg",
+      "category": "accessories",
+      "stock": 150
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "review": "Great product!",
+      "productId": 1
+    }
+  ],
+  "trainings": [
+    {
+      "id": 1,
+      "title": "Weight Loss Program",
+      "description": "12-week program for weight loss",
+      "price": 299.99
+    },
+    {
+      "id": 2,
+      "title": "Strength Training Program",
+      "description": "8-week program focused on building muscle and strength",
+      "price": 249.99
+    },
+    {
+      "id": 3,
+      "title": "Endurance Program",
+      "description": "10-week program to increase stamina and endurance",
+      "price": 269.99
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "address": "123 Fitness Lane, Muscle City, USA",
+      "orders": [1]
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phone": "987-654-3210",
+      "address": "456 Wellness Blvd, Strength Town, USA",
+      "orders": []
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 2,
+          "price": 19.99
+        },
+        {
+          "productId": 2,
+          "quantity": 1,
+          "price": 12.99
+        }
+      ],
+      "totalPrice": 52.97,
+      "status": "pending",
+      "date": "2024-12-25T12:00:00Z"
+    }
+  ]
+}
