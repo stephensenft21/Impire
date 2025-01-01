@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/client/page.js", "src/app/contact/page.js"  ],
+, "src/app/client-transformations/page.js", "src/app/contact/page.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { useMerchContext } from "../context/ProductProvider.js";
+import { useMerchContext } from "../../context/ProductProvider.js.js";
 
 const MerchTable = () => {
   const { merch, fetchMerch, addMerch, updateMerch, deleteMerch } =

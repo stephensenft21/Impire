@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { useTrainingContext } from "../context/TrainingProvider";
+import { useTrainingContext } from "../../context/TrainingProvider";
 
 const TrainingTable = () => {
   const { trainings, fetchTrainings, addTraining, updateTraining, deleteTraining } =

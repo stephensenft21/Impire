@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../../context/AppContext";
 import { FaShoppingCart, FaGoogle } from "react-icons/fa"; 
 import { motion, AnimatePresence } from "framer-motion";
 

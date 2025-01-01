@@ -1,4 +1,4 @@
-import { useCartContext } from "../context/CartContext";
+import { useCartContext } from "../../context/CartContext";
 import { motion } from "framer-motion";
 
 const MerchCard = ({ item }) => {

@@ -1,9 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navigation/Navbar.js";
 import "../styles/globals.css";
 import { AppProvider } from "../context/AppContext";
-import Footer from "../components/Footer";
+import Footer from "../components/Navigation/Footer.js";
 import { TrainingProvider } from ".././context/TrainingProvider";
 import { ProductProvider } from "../context/ProductProvider.js";
 import { CartProvider } from "../context/CartContext.js";

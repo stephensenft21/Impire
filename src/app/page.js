@@ -44,7 +44,7 @@ const HomePage = () => {
             </Link>
 
             {/* Card 2 */}
-            <Link href="/training-list">
+            <Link href="/training">
               <motion.div
                 className="bg-gradient-to-r from-purple-600 via-purple-500 to-purple-400 shadow-lg p-6 rounded-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer hover:bg-purple-600"
                 initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ const HomePage = () => {
             </Link>
 
             {/* Card 3 */}
-            <Link href="/client-transformations">
+            <Link href="/client">
               <motion.div
                 className="bg-gradient-to-r from-purple-600 via-purple-500 to-purple-400 shadow-lg p-6 rounded-lg hover:shadow-xl transition-all transform hover:scale-105 cursor-pointer hover:bg-purple-600"
                 initial={{ opacity: 0, y: 20 }}
