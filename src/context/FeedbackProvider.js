@@ -7,9 +7,40 @@ const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
   const [feedback, setFeedback] = useState([]);
+  const [feedbackList, setFeedbackList] = useState([]);
+  
+  const [reviews, setReviews] = useState([]);
+
+  const addFeedback = async (feedback) => {
+    try {
+      const feedbackWithId = {
+        ...feedback,
+        id: new Date().getTime(), // Generate a unique ID based on the timestamp
+      };
+  
+      // Create a review object with the specified structure
+      const review = {
+        id: feedbackWithId.id,
+        name: feedbackWithId.name,
+        email: feedbackWithId.email,
+        message: feedbackWithId.message,
+        submittedAt: feedbackWithId.submittedAt,
+      };
+  
+      // Update the local state immediately for optimistic UI updates
+      setFeedbackList((prev) => [...prev, feedbackWithId]);
+      setReviews((prev) => [...prev, review]);
+  
+      // Call createFeedback to persist the data on the server
+      await createFeedback(review);
+    } catch (error) {
+      console.error("Error adding feedback:", error);
+    }
+  };
+  
 
   // Base URL for API (replace with your backend API endpoint)
-  const API_BASE = "/api/comments";
+  const API_BASE = "http://localhost:8080/reviews";
 
   // Fetch Feedback
   const fetchFeedback = async () => {
@@ -55,7 +86,7 @@ export const FeedbackProvider = ({ children }) => {
 
   return (
     <FeedbackContext.Provider
-      value={{ feedback, fetchFeedback, createFeedback, updateFeedback, deleteFeedback }}
+      value={{ feedback, fetchFeedback, addFeedback,createFeedback, updateFeedback, deleteFeedback }}
     >
       {children}
     </FeedbackContext.Provider>
