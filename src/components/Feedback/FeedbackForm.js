@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useFeedbackContext } from "../context/FeedbackProvider";
+import { useFeedbackContext } from "../../context/FeedbackProvider";
 import { motion } from "framer-motion";
 
 const FeedbackForm = () => {

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useAppContext } from '../../context/AppContext';
-import FeedbackForm from '../../components/FeedbackForm';
+import FeedbackForm from '../../components/Feedback/FeedbackForm';
 
 const ContactPage = () => {
   const { theme } = useAppContext();

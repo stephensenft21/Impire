@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useMerchContext } from "../../context/ProductProvider.js";
 import { motion } from "framer-motion";
-import MerchCard from "../../components/MerchCard";
+import MerchCard from "../../components/Merch/MerchCard.js";
 import { FaShoppingCart, FaSpinner } from "react-icons/fa";
 
 const MerchPage = () => {

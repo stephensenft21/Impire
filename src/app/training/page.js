@@ -1,11 +1,13 @@
 'use client';
 import React, { useEffect } from 'react';
 import { useTrainingContext } from '../../context/TrainingProvider';
-import TrainingCard from '../../components/TrainingCard';
+import TrainingCard from '../../components/Training/TrainingCard';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const TrainingPage = () => {
   const { training, loading, fetchTraining } = useTrainingContext();
+  const router = useRouter();
 
   useEffect(() => {
     fetchTraining();
@@ -14,6 +16,10 @@ const TrainingPage = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  const handleNavigateToForm = () => {
+    router.push('/training/form'); // Adjust the path if your form is in a different location
+  };
 
   return (
     <motion.div
@@ -40,6 +46,14 @@ const TrainingPage = () => {
           </motion.div>
         ))}
       </motion.div>
+      <div className="mt-8">
+        <button
+          onClick={handleNavigateToForm}
+          className="bg-purple-500 text-white px-6 py-3 rounded-md shadow hover:bg-purple-600 transition"
+        >
+          Create Training Plan
+        </button>
+      </div>
     </motion.div>
   );
 };
