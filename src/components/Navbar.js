@@ -19,7 +19,7 @@ const Navbar = () => {
     { href: "/feedback", label: "Feedback" },
     { href: "/payment", label: "Payment" },
     { href: "/merch", label: "Merch" },
-    { href: "/client-transformation", label: "Client Transformation" },
+    { href: "/client", label: "Client Transformation" },
   ];
 
   const cartItemCount = Array.isArray(cart)
