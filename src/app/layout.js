@@ -28,9 +28,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-gray-900 text-white antialiased">
         <AppProvider>
-          <Navbar />
-
           <CartProvider>
+            <Navbar />
             <FeedbackProvider>
               <ProductProvider>
                 <TrainingProvider>

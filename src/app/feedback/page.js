@@ -1,11 +1,18 @@
 "use client";
-
-import React from "react";
+import React, { useEffect } from "react";
 import { useFeedbackContext } from "../../context/FeedbackProvider";
 import { motion } from "framer-motion";
 
 const FeedbackPage = () => {
-  const { feedback } = useFeedbackContext();
+  const { feedback, fetchFeedback, loading } = useFeedbackContext();
+
+  useEffect(() => {
+    fetchFeedback();
+  }, [fetchFeedback]);
+
+  if (loading) {
+    return <div className="text-center text-white">Loading...</div>;
+  }
 
   return (
     <motion.div
@@ -16,7 +23,7 @@ const FeedbackPage = () => {
     >
       {/* Page Title */}
       <motion.h1
-        className="text-5xl font-bold mb-10 text-center text-purple-400"
+        className="text-7xl font-bold mb-10 text-center text-purple-400"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -46,7 +53,10 @@ const FeedbackPage = () => {
               <p className="text-sm text-gray-300 mb-2">{item.email}</p>
               <p className="text-gray-200">{item.message}</p>
               <p className="text-xs text-gray-500 mt-2">
-                Submitted on {new Date(item.submittedAt).toLocaleString()}
+                Submitted on{" "}
+                {item.submittedAt && !isNaN(new Date(item.submittedAt).getTime())
+                  ? new Date(item.submittedAt).toLocaleString()
+                  : "Invalid Date"}
               </p>
             </motion.div>
           ))}

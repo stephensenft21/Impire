@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useAppContext } from '../../context/AppContext';
+import FeedbackForm from '../../components/FeedbackForm';
 
 const ContactPage = () => {
   const { theme } = useAppContext();
@@ -24,107 +25,82 @@ const ContactPage = () => {
             Contact Me
           </motion.h1>
           <p className="text-lg text-gray-300">
-            Got questions, feedback, or want to collaborate? Fill out the form below or reach out directly.
+            Got questions or want to collaborate? Fill out the form below or reach out directly.
           </p>
         </header>
 
         <main>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Contact Form */}
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-            >
-              <form>
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-200">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="mt-2 p-3 w-full rounded-lg border border-gray-600 bg-gray-800 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-200">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="mt-2 p-3 w-full rounded-lg border border-gray-600 bg-gray-800 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    placeholder="Your email"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-200">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    className="mt-2 p-3 w-full rounded-lg border border-gray-600 bg-gray-800 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    placeholder="Your message"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-purple-600 hover:bg-purple-500 text-white font-medium py-3 px-4 rounded-lg shadow-lg transition duration-300"
-                >
-                  Send Message
-                </button>
-              </form>
-            </motion.div>
-
             {/* Feedback Form */}
+            <FeedbackForm />
+
+            {/* Contact Information */}
             <motion.div
-              className="space-y-6"
+              className="flex flex-col justify-center space-y-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
             >
-              <form>
-                <div>
-                  <label htmlFor="rating" className="block text-sm font-medium text-gray-200">
-                    Rate Your Experience
-                  </label>
-                  <select
-                    id="rating"
-                    name="rating"
-                    className="mt-2 p-3 w-full rounded-lg border border-gray-600 bg-gray-800 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                  >
-                    <option value="excellent">Excellent</option>
-                    <option value="good">Good</option>
-                    <option value="average">Average</option>
-                    <option value="poor">Poor</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="feedback" className="block text-sm font-medium text-gray-200">
-                    Feedback
-                  </label>
-                  <textarea
-                    id="feedback"
-                    name="feedback"
-                    rows="5"
-                    className="mt-2 p-3 w-full rounded-lg border border-gray-600 bg-gray-800 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    placeholder="Share your feedback"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-purple-600 hover:bg-purple-500 text-white font-medium py-3 px-4 rounded-lg shadow-lg transition duration-300"
+              <div>
+                <h2 className="text-xl font-semibold mb-2">Contact Info</h2>
+                <p className="text-gray-300">Feel free to reach out anytime. I'll do my best to respond promptly!</p>
+              </div>
+              <div>
+                <p className="flex items-center space-x-3">
+                  <span className="text-purple-400">
+                    <i className="fas fa-envelope"></i>
+                  </span>
+                  <span>email@example.com</span>
+                </p>
+                <p className="flex items-center space-x-3">
+                  <span className="text-purple-400">
+                    <i className="fas fa-phone"></i>
+                  </span>
+                  <span>+1 234 567 890</span>
+                </p>
+                <p className="flex items-center space-x-3">
+                  <span className="text-purple-400">
+                    <i className="fas fa-map-marker-alt"></i>
+                  </span>
+                  <span>123 Fitness St, Training City</span>
+                </p>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-400 hover:text-purple-300 transition duration-300"
                 >
-                  Submit Feedback
-                </button>
-              </form>
+                  <i className="fab fa-facebook fa-lg"></i>
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-400 hover:text-purple-300 transition duration-300"
+                >
+                  <i className="fab fa-twitter fa-lg"></i>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-400 hover:text-purple-300 transition duration-300"
+                >
+                  <i className="fab fa-instagram fa-lg"></i>
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-400 hover:text-purple-300 transition duration-300"
+                >
+                  <i className="fab fa-linkedin fa-lg"></i>
+                </a>
+              </div>
             </motion.div>
           </div>
         </main>

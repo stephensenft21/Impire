@@ -2,83 +2,103 @@
   "products": [
     {
       "id": 1,
-      "name": "T-Shirt",
-      "description": "Comfortable cotton T-shirt",
-      "price": 19.99,
-      "image": "tshirt.jpg",
-      "category": "clothing",
-      "stock": 100
+      "name": "Fitness Hoodie",
+      "price": 49.99,
+      "description": "A comfortable and stylish hoodie for your workouts.",
+      "image": "https://source.unsplash.com/random/400x400/?hoodie"
     },
     {
       "id": 2,
-      "name": "Water Bottle",
-      "description": "Stainless steel water bottle",
-      "price": 12.99,
-      "image": "bottle.jpg",
-      "category": "accessories",
-      "stock": 50
+      "name": "Yoga Mat",
+      "price": 29.99,
+      "description": "High-quality yoga mat with great grip and comfort.",
+      "image": "https://source.unsplash.com/random/400x400/?yoga"
     },
     {
       "id": 3,
-      "name": "Gym Bag",
-      "description": "Spacious gym bag with multiple compartments",
-      "price": 29.99,
-      "image": "gym_bag.jpg",
-      "category": "accessories",
-      "stock": 75
+      "name": "Water Bottle",
+      "price": 19.99,
+      "description": "Insulated water bottle to keep your drinks hot or cold.",
+      "image": "https://source.unsplash.com/random/400x400/?bottle"
     },
     {
       "id": 4,
-      "name": "Joggers",
-      "description": "Comfortable and breathable joggers for workouts",
-      "price": 34.99,
-      "image": "joggers.jpg",
-      "category": "clothing",
-      "stock": 80
+      "name": "Running Shoes",
+      "price": 89.99,
+      "description": "Lightweight and durable running shoes for all terrains.",
+      "image": "https://source.unsplash.com/random/400x400/?shoes"
     },
     {
       "id": 5,
-      "name": "Resistance Bands",
-      "description": "Set of durable resistance bands for strength training",
-      "price": 19.99,
-      "image": "resistance_bands.jpg",
-      "category": "accessories",
-      "stock": 120
+      "name": "Gym Bag",
+      "price": 59.99,
+      "description": "Spacious and stylish gym bag for all your essentials.",
+      "image": "https://source.unsplash.com/random/400x400/?gym-bag"
     },
     {
       "id": 6,
-      "name": "Yoga Mat",
-      "description": "Non-slip yoga mat for comfort and stability",
-      "price": 24.99,
-      "image": "yoga_mat.jpg",
-      "category": "accessories",
-      "stock": 60
+      "name": "Sports Watch",
+      "price": 129.99,
+      "description": "Track your fitness progress with this high-tech sports watch.",
+      "image": "https://source.unsplash.com/random/400x400/?sports-watch"
     },
     {
       "id": 7,
-      "name": "Sports Water Bottle",
-      "description": "Leak-proof water bottle with easy carry handle",
-      "price": 15.99,
-      "image": "sports_bottle.jpg",
-      "category": "accessories",
-      "stock": 90
+      "name": "Resistance Bands",
+      "price": 19.99,
+      "description": "Set of durable resistance bands for strength training.",
+      "image": "https://source.unsplash.com/random/400x400/?resistance-bands"
     },
     {
       "id": 8,
-      "name": "Sweatband",
-      "description": "Absorbent sweatband for workouts",
-      "price": 5.99,
-      "image": "sweatband.jpg",
-      "category": "accessories",
-      "stock": 150
+      "name": "Workout Gloves",
+      "price": 14.99,
+      "description": "Comfortable gloves to protect your hands during workouts.",
+      "image": "https://source.unsplash.com/random/400x400/?workout-gloves"
     }
   ],
-  "comments": [
+  "reviews": [
     {
       "id": 1,
       "name": "John Doe",
-      "review": "Great product!",
-      "productId": 1
+      "email": "johndoe@example.com",
+      "message": "Great experience! Loved the service.",
+      "submittedAt": "2024-12-30T14:25:30Z"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "message": "The training packages are amazing. Highly recommend!",
+      "submittedAt": "2024-12-29T10:15:45Z"
+    },
+    {
+      "id": 3,
+      "name": "Mark Johnson",
+      "email": "markj@example.com",
+      "message": "The support team was really helpful. Thank you!",
+      "submittedAt": "2024-12-28T18:50:20Z"
+    },
+    {
+      "id": 4,
+      "name": "Emily Brown",
+      "email": "emilyb@example.com",
+      "message": "A seamless experience from start to finish.",
+      "submittedAt": "2024-12-27T20:35:10Z"
+    },
+    {
+      "id": 5,
+      "name": "Chris Wilson",
+      "email": "chriswilson@example.com",
+      "message": "Great platform, would love to see more features soon.",
+      "submittedAt": "2024-12-26T22:12:00Z"
+    },
+    {
+      "id": 1735763205665,
+      "name": "Stephen Senft",
+      "email": "kylesenft65@gmail.com",
+      "message": "\"test Data\" ",
+      "submittedAt": "2025-01-01T20:26:45.665Z"
     }
   ],
   "trainings": [
@@ -108,7 +128,9 @@
       "email": "john.doe@example.com",
       "phone": "123-456-7890",
       "address": "123 Fitness Lane, Muscle City, USA",
-      "orders": [1]
+      "orders": [
+        1
+      ]
     },
     {
       "id": 2,
