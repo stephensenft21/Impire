@@ -1,10 +1,9 @@
 "use client";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useMerchContext } from "../../context/ProductProvider.js";
 import { motion } from "framer-motion";
 import MerchCard from "../../components/MerchCard";
-// import { useCartContext } from "../../context/CartContext";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaSpinner } from "react-icons/fa";
 
 const MerchPage = () => {
   const { merch, loading, fetchMerch } = useMerchContext();
@@ -14,7 +13,12 @@ const MerchPage = () => {
   }, [fetchMerch]);
 
   if (loading) {
-    return <div className="text-center text-white">Loading...</div>;
+    return (
+      <div className="text-center text-white">
+        <FaSpinner className="animate-spin text-3xl" />
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   const containerVariants = {
@@ -57,11 +61,21 @@ const MerchPage = () => {
         {merch && merch.length > 0 ? (
           merch.map((item) => (
             <motion.div key={item.id} variants={cardVariants}>
-              <MerchCard merch={item} />
+              <MerchCard item={item} />
             </motion.div>
           ))
         ) : (
-          <p>No merchandise available.</p>
+          <div className="text-center">
+            <p>No merchandise available.</p>
+            <motion.div
+              className="text-center mt-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaSpinner className="animate-spin text-3xl" />
+            </motion.div>
+          </div>
         )}
       </motion.div>
     </motion.div>
@@ -69,4 +83,3 @@ const MerchPage = () => {
 };
 
 export default MerchPage;
-
