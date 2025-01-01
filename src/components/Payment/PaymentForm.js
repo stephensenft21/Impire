@@ -1,101 +1,81 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { motion } from 'framer-motion';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-
-const PaymentForm = () => {
+const PaymentForm = ({ selectedPackage, onBack }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!stripe || !elements) return;
+
     setIsProcessing(true);
     setError(null);
 
-    if (!stripe || !elements) {
-      setError("Stripe has not loaded properly.");
-      setIsProcessing(false);
-      return;
-    }
-
     const cardElement = elements.getElement(CardElement);
+    try {
+      const { error: stripeError, paymentMethod } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+      });
 
-    const { error: paymentError, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: cardElement,
-    });
-
-    if (paymentError) {
-      setError(paymentError.message);
-      setIsProcessing(false);
-      return;
-    }
-
-    const response = await fetch("/api/stripe/charge", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ paymentMethodId: paymentMethod.id }),
-    });
-
-    const data = await response.json();
-
-    if (data.error) {
-      setError(data.error.message);
-      setIsProcessing(false);
-    } else {
-      alert("Payment successful!");
+      if (stripeError) {
+        setError(stripeError.message);
+      } else {
+        console.log('Payment Method:', paymentMethod);
+        alert('Payment successful!');
+      }
+    } catch (err) {
+      setError('An unexpected error occurred.');
+    } finally {
       setIsProcessing(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4">
-      <CardElement className="p-2 border rounded bg-white" />
-      {error && <p className="text-red-500 mt-2">{error}</p>}
-      <button
-        type="submit"
-        disabled={isProcessing || !stripe}
-        className="bg-purple-500 text-white px-4 py-2 mt-4 rounded hover:bg-purple-600 transition duration-300"
-      >
-        {isProcessing ? "Processing..." : "Pay Now"}
-      </button>
-    </form>
+    <motion.div
+      className="bg-gray-800 text-white shadow-lg rounded-lg p-6 max-w-lg mx-auto"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <h2 className="text-2xl font-bold mb-4 text-center text-purple-400">Payment Details</h2>
+      <div className="bg-gray-700 shadow rounded p-4 mb-4">
+        <h3 className="text-lg font-bold text-purple-300">{selectedPackage.title}</h3>
+        <p className="text-gray-300">{selectedPackage.description}</p>
+        <span className="text-purple-400 font-bold text-xl">${selectedPackage.price}</span>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <CardElement className="p-2 border rounded bg-gray-900 text-white" />
+        {error && <p className="text-red-500 mt-2">{error}</p>}
+        <div className="mt-4 flex justify-between">
+          <motion.button
+            type="button"
+            className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-500 transition duration-300"
+            onClick={onBack}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Back
+          </motion.button>
+          <motion.button
+            type="submit"
+            disabled={isProcessing || !stripe}
+            className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 transition duration-300"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {isProcessing ? "Processing..." : "Pay Now"}
+          </motion.button>
+        </div>
+      </form>
+    </motion.div>
   );
 };
 
-export default function PaymentPage() {
-  return (
-    <motion.div
-      className="min-h-screen bg-gradient-to-b from-purple-900 via-purple-700 to-purple-500 text-white"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="max-w-md mx-auto mt-16">
-        <motion.h1
-          className="text-4xl font-bold text-center text-white"
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-        >
-          Make a Payment
-        </motion.h1>
-        <motion.div
-          className="mt-8 bg-gray-900 p-6 rounded-lg shadow-lg"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          <Elements stripe={stripePromise}>
-            <PaymentForm />
-          </Elements>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-}
+export default PaymentForm;

@@ -116,7 +116,7 @@ const FeedbackForm = () => {
         </motion.div>
         <motion.button
           type="submit"
-          className="bg-purple-500 text-white w-full p-2 rounded hover:bg-purple-600 transition duration-300"
+          className="bg-purple-500 text-white w-full p-2 rounded hover:bg-purple-500 transition duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
