@@ -1,8 +1,8 @@
 'use client'
-import { useAppContext } from '../../../context/TrainingProvider';
+import { useCartContext } from "../../../context/CartContext";
 
 const TrainingList = () => {
-  const { cart, setCart } = useAppContext();
+  const { cart, setCart } = useCartContext();
 
   const packages = [
     { id: 1, name: 'Strength Training', price: 50 },
