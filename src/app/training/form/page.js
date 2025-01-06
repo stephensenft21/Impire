@@ -1,5 +1,5 @@
 'use client';
-import TrainingForm from '../../components/TrainingForm';
+import TrainingForm from "../../../components/TrainingForm";
 
 const TrainingFormPage = () => {
   return (

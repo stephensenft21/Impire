@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useTrainingContext } from "../../context/TrainingProvider";
+import { useTrainingContext } from "../context/TrainingProvider";
 
 const TrainingPackagesPage = () => {
   const { trainingPackages, fetchTrainingPackages } = useTrainingContext();

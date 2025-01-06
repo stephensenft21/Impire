@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import Navbar from "../components/Navigation/Navbar.js";
@@ -10,10 +10,11 @@ import { ProductProvider } from "../context/ProductProvider.js";
 import { CartProvider } from "../context/CartContext.js";
 import { Analytics } from "@vercel/analytics/react";
 import { FeedbackProvider } from "../context/FeedbackProvider.js";
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { TrainingPackageProvider } from "../context/TrainingPackageContext.js";
 
-const stripePromise = loadStripe('your-publishable-key-here'); // Replace with your Stripe publishable key
+const stripePromise = loadStripe("your-publishable-key-here"); // Replace with your Stripe publishable key
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
- const metadata = {
+const metadata = {
   title: "Impire - Fitness Redefined",
   description: "Transform your body and mind with Impire.",
 };
@@ -34,21 +35,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-gray-900 text-white antialiased">
-
         <AppProvider>
-        <Elements stripe={stripePromise}>
-          <CartProvider>
-            <Navbar />
-            <FeedbackProvider>
-              <ProductProvider>
-                <TrainingProvider>
-                  {" "}
-                  <main className="pt-16">{children}</main>{" "}
-                </TrainingProvider>
-              </ProductProvider>
-            </FeedbackProvider>
-          </CartProvider>
-        </Elements>
+          <Elements stripe={stripePromise}>
+            <TrainingPackageProvider>
+              <CartProvider>
+                <Navbar />
+                <FeedbackProvider>
+                  <ProductProvider>
+                    <TrainingProvider>
+                      {" "}
+                      <main className="pt-16">{children}</main>{" "}
+                    </TrainingProvider>
+                  </ProductProvider>
+                </FeedbackProvider>
+              </CartProvider>
+            </TrainingPackageProvider>
+          </Elements>
         </AppProvider>
         <Footer />
         <Analytics />

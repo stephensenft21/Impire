@@ -5,7 +5,7 @@ const Parallax = ({ image, children }) => {
     <div
       className="relative bg-fixed bg-cover bg-center h-[50vh] flex items-center justify-center"
       style={{
-        backgroundImage: `url(${require('../assets/TJ.png')})`,
+        backgroundImage: `url(${require('../assets/images/TJ.png')})`,
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>

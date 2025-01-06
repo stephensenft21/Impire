@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
 import { useTrainingContext } from '../../context/TrainingProvider';
-import TrainingCard from '../../components/Training/TrainingCard';
+import TrainingCard from '../../components/TrainingCard';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
