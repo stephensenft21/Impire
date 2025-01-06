@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAppContext } from "../../context/AppContext";
-import { FaShoppingCart, FaGoogle } from "react-icons/fa"; 
+import { FaShoppingCart } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const { user, signInWithGoogle, logout, cart } = useAppContext();
+  const { user, logout, cart } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
@@ -20,6 +20,9 @@ const Navbar = () => {
     { href: "/payment", label: "Payment" },
     { href: "/merch", label: "Merch" },
     { href: "/client", label: "Client Transformation" },
+    { href: "/login", label: "Login" },
+
+
   ];
 
   const cartItemCount = Array.isArray(cart)
@@ -114,24 +117,7 @@ const Navbar = () => {
               </button>
             </motion.div>
           ) : (
-            <>
-              <button
-                onClick={signInWithGoogle}
-                className="hidden md:inline-flex bg-blue-500 px-4 py-2 rounded hover:bg-blue-600"
-              >
-                Sign in with Google
-              </button>
-              {/* Show Icon in Responsive Mode */}
-              <motion.button
-                onClick={signInWithGoogle}
-                className="md:hidden p-2 rounded bg-blue-500 text-white hover:bg-blue-600"
-                whileTap={{ scale: 0.9 }}
-                transition={{ duration: 0.2 }}
-                aria-label="Sign in with Google"
-              >
-                <FaGoogle className="text-2xl" />
-              </motion.button>
-            </>
+            <span className="text-gray-300">Please log in</span>
           )}
         </div>
       </div>
@@ -197,15 +183,7 @@ const Navbar = () => {
                   </button>
                 </div>
               ) : (
-                <motion.button
-                  onClick={signInWithGoogle}
-                  className="w-full bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FaGoogle className="text-white text-xl" />
-                  <span className="ml-2">Sign in with Google</span>
-                </motion.button>
+                <span className="text-gray-300">Please log in</span>
               )}
             </div>
           </motion.div>

@@ -1,19 +1,14 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, setLogLevel } from "firebase/app";
 import {
   getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
   GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged,
 } from "firebase/auth";
-import { setLogLevel } from "firebase/app";
+
 setLogLevel("debug");
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyCYYPxLrF0vfZPcuh1b0Z5vJD215qBOyhs",
   authDomain: "impire-be700.firebaseapp.com",
@@ -26,7 +21,72 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Auth
 const auth = getAuth(app);
+
+// Only disable app verification for testing in local environments (during development)
+if (window.location.hostname === "localhost") {
+  if (auth.settings) {
+    auth.settings.appVerificationDisabledForTesting = true;
+  } else {
+    console.error("auth.settings is undefined");
+  }
+}
+
+const setupRecaptcha = () => {
+  window.recaptchaVerifier = new RecaptchaVerifier(
+    "recaptcha-container",
+    {
+      size: "normal",
+      callback: (response) => {
+        console.log("reCAPTCHA solved:", response);
+      },
+      "expired-callback": () => {
+        console.error("reCAPTCHA expired. Please try again.");
+      },
+    },
+    auth
+  );
+
+  window.recaptchaVerifier.render().then((widgetId) => {
+    console.log("reCAPTCHA Widget ID:", widgetId);
+  });
+};
+
+// Function to sign in with phone number
+const signInWithPhone = (phoneNumber) => {
+  const appVerifier = window.recaptchaVerifier;
+  signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    .then((confirmationResult) => {
+      // SMS sent. Store confirmationResult to use later for verifying the code.
+      window.confirmationResult = confirmationResult;
+      console.log("SMS sent successfully.");
+    })
+    .catch((error) => {
+      console.error("Error during signInWithPhoneNumber:", error.message);
+    });
+};
+
+// Function to confirm verification code
+const confirmCode = (code) => {
+  const confirmationResult = window.confirmationResult;
+  if (!confirmationResult) {
+    console.error("No confirmation result available.");
+    return;
+  }
+
+  confirmationResult
+    .confirm(code)
+    .then((result) => {
+      console.log("User signed in successfully:", result.user);
+    })
+    .catch((error) => {
+      console.error("Error during code confirmation:", error.message);
+    });
+};
+
+// Google Sign-In
 const googleProvider = new GoogleAuthProvider();
 
-export { auth, googleProvider };
+export {setupRecaptcha, signInWithPhone, confirmCode, googleProvider,auth };

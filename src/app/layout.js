@@ -13,7 +13,8 @@ import { FeedbackProvider } from "../context/FeedbackProvider.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { TrainingPackageProvider } from "../context/TrainingPackageContext.js";
-
+import dynamic from 'next/dynamic';
+import { useRouter } from "next/router"; // Import useRouter
 const stripePromise = loadStripe("your-publishable-key-here"); // Replace with your Stripe publishable key
 
 const geistSans = Geist({
@@ -56,5 +57,6 @@ export default function RootLayout({ children }) {
         <Analytics />
       </body>
     </html>
+    
   );
 }
