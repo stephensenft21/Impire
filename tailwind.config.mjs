@@ -7,7 +7,10 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
+      fontFamily: {
+        'cinzel-decorative': ['"Cinzel Decorative"', 'serif'],
+      },
+        colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

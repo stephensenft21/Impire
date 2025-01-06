@@ -102,24 +102,68 @@
     }
   ],
   "trainings": [
-    {
-      "id": 1,
-      "title": "Weight Loss Program",
-      "description": "12-week program for weight loss",
-      "price": 299.99
-    },
-    {
-      "id": 2,
-      "title": "Strength Training Program",
-      "description": "8-week program focused on building muscle and strength",
-      "price": 249.99
-    },
-    {
-      "id": 3,
-      "title": "Endurance Program",
-      "description": "10-week program to increase stamina and endurance",
-      "price": 269.99
-    }
+    [
+      {
+        "id": 1,
+        "title": "Online Coaching - Basic Tier",
+        "description": "12-week program for weight loss",
+        "options": [
+          {
+            "duration": "1 month",
+            "price": 120.00
+          },
+          {
+            "duration": "4 months",
+            "price": 450.00
+          },
+          {
+            "duration": "6 months",
+            "price": 650.00
+          }
+        ],
+        "setupFee": 150.00
+      },
+      {
+        "id": 2,
+        "title": "Online Coaching - Strength Tier",
+        "description": "8-week program focused on building muscle and strength",
+        "options": [
+          {
+            "duration": "1 month",
+            "price": 120.00
+          },
+          {
+            "duration": "4 months",
+            "price": 450.00
+          },
+          {
+            "duration": "6 months",
+            "price": 650.00
+          }
+        ],
+        "setupFee": 150.00
+      },
+      {
+        "id": 3,
+        "title": "Online Coaching - Endurance Tier",
+        "description": "10-week program to increase stamina and endurance",
+        "options": [
+          {
+            "duration": "1 month",
+            "price": 120.00
+          },
+          {
+            "duration": "4 months",
+            "price": 450.00
+          },
+          {
+            "duration": "6 months",
+            "price": 650.00
+          }
+        ],
+        "setupFee": 150.00
+      }
+    ]
   ],
   "customers": [
     {

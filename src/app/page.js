@@ -51,7 +51,7 @@ const HomePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
               >
-                <h2 className="text-2xl font-bold text-white">Training Packages</h2>
+                <h2 className="text-4xl font-bold text-white">Training Packages</h2>
                 <p className="text-gray-200">Explore our specialized fitness packages.</p>
               </motion.div>
             </Link>
@@ -64,7 +64,7 @@ const HomePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
               >
-                <h2 className="text-2xl font-bold text-white">Client Transformations</h2>
+                <h2 className="text-4xl font-bold text-white">Client Transformations</h2>
                 <p className="text-gray-200">See the incredible results achieved by our clients.</p>
               </motion.div>
             </Link>

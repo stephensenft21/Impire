@@ -1,10 +1,10 @@
 "use client";
-
 import React from "react";
 import Parallax from "../../components/Parallax"; // Adjust path as needed
 import { motion } from "framer-motion";
 import Link from "next/link"; // Assuming you're using Next.js
-
+import * as Tooltip from "@radix-ui/react-tooltip"; // Radix UI Tooltip
+import * as Dialog from "@radix-ui/react-dialog"; // Radix UI Dialog
 const About = () => {
   return (
     <motion.div
@@ -14,9 +14,9 @@ const About = () => {
       transition={{ duration: 0.8 }}
     >
       {/* Parallax Section */}
-      <Parallax image="/TJ.png">
+      <Parallax image="../../assets/images/TJ.png">
         <motion.h1
-          className="text-5xl font-extrabold text-white"
+          className="text-6xl text-white font-cinzel-decorative"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -34,14 +34,18 @@ const About = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Welcome to <span className="text-purple-400 font-bold">Impire</span>! I am a dedicated fitness trainer with years of experience helping clients achieve their fitness dreams. Whether you're aiming for strength, endurance, or transformation, I'm here to guide you every step of the way.
+            Welcome to <span className="text-purple-400 font-bold">Impire</span>
+            ! I am a dedicated fitness trainer with years of experience helping
+            clients achieve their fitness dreams. Whether you're aiming for
+            strength, endurance, or transformation, I'm here to guide you every
+            step of the way.
           </motion.p>
         </div>
 
         {/* Details Section */}
         <div className="max-w-5xl mx-auto mt-12 flex flex-col lg:flex-row items-center gap-10">
           <motion.img
-            src="../../assets/TJ.png"
+            src={require("../../public/-about-me-posing-photo.jpg")}
             alt="Fitness Trainer"
             className="w-full lg:w-1/2 rounded-lg shadow-lg"
             initial={{ scale: 0.9, opacity: 0 }}
@@ -57,17 +61,28 @@ const About = () => {
             <h2 className="text-3xl font-bold text-white mb-4">What I Offer</h2>
             <ul className="space-y-4 text-lg">
               <li>
-                <span className="text-purple-400 font-bold">✔ Custom Training Plans:</span> Tailored to your goals and fitness level.
+                <span className="text-purple-400 font-bold">
+                  ✔ Custom Training Plans:
+                </span>{" "}
+                Tailored to your goals and fitness level.
               </li>
               <li>
-                <span className="text-purple-400 font-bold">✔ Nutrition Guidance:</span> Optimized meal plans for better results.
+                <span className="text-purple-400 font-bold">
+                  ✔ Nutrition Guidance:
+                </span>{" "}
+                Optimized meal plans for better results.
               </li>
               <li>
-                <span className="text-purple-400 font-bold">✔ Motivation & Support:</span> I’m with you every step of the way.
+                <span className="text-purple-400 font-bold">
+                  ✔ Motivation & Support:
+                </span>{" "}
+                I’m with you every step of the way.
               </li>
             </ul>
           </motion.div>
         </div>
+
+        {/* Tooltip Example */}
 
         {/* Call to Action */}
         <motion.div
@@ -80,7 +95,8 @@ const About = () => {
             Ready to transform your body and mind?
           </h3>
           <p className="text-gray-400 mb-6">
-            Let’s embark on this journey together. Your transformation starts here.
+            Let’s embark on this journey together. Your transformation starts
+            here.
           </p>
           <Link href="/contact">
             <button className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300">

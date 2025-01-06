@@ -50,13 +50,13 @@ const ContactPage = () => {
                   <span className="text-purple-400">
                     <i className="fas fa-envelope"></i>
                   </span>
-                  <span>email@example.com</span>
-                </p>
+                  <span>TK.impire@gmail.com</span>
+                  </p>
                 <p className="flex items-center space-x-3">
                   <span className="text-purple-400">
                     <i className="fas fa-phone"></i>
                   </span>
-                  <span>+1 234 567 890</span>
+                  <span></span>
                 </p>
                 <p className="flex items-center space-x-3">
                   <span className="text-purple-400">
@@ -69,36 +69,12 @@ const ContactPage = () => {
               {/* Social Links */}
               <div className="flex space-x-4">
                 <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-400 hover:text-purple-300 transition duration-300"
-                >
-                  <i className="fab fa-facebook fa-lg"></i>
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-400 hover:text-purple-300 transition duration-300"
-                >
-                  <i className="fab fa-twitter fa-lg"></i>
-                </a>
-                <a
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-400 hover:text-purple-300 transition duration-300"
                 >
                   <i className="fab fa-instagram fa-lg"></i>
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-400 hover:text-purple-300 transition duration-300"
-                >
-                  <i className="fab fa-linkedin fa-lg"></i>
                 </a>
               </div>
             </motion.div>

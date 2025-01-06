@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { TrainingPackageContext } from "../context/TrainingPackageContext";
 import { generatePDF } from "../utils/pdfGenerator";
 import { validateForm } from "../utils/formValidation";
+import emailjs from "emailjs-com";
 
 const TrainingForm = () => {
   const { createTrainingPlan } = useContext(TrainingPackageContext);
@@ -49,9 +50,35 @@ const TrainingForm = () => {
       return;
     }
 
-    await createTrainingPlan(formData);
-    alert("Training Plan Submitted!");
-    setFormData({});
+    try {
+      // Create training plan in the context
+      await createTrainingPlan(formData);
+
+      // Send email with EmailJS
+      const templateParams = {
+        clientName: formData.clientName,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        fitnessGoalsShort: formData.fitnessGoalsShort,
+        fitnessGoalsLong: formData.fitnessGoalsLong,
+        activityLevel: formData.activityLevel,
+        lifestyleFactors: formData.lifestyleFactors,
+        // Add other fields as needed
+      };
+
+      await emailjs.send(
+        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
+        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        templateParams,
+        "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
+      );
+
+      alert("Training Plan Submitted and Email Sent!");
+      setFormData({});
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send the email. Please try again.");
+    }
   };
 
   const handleDownloadPDF = () => {

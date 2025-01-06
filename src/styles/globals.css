@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,3 +24,5 @@ body {
 .parallax {
   background-attachment: fixed;
 }
+
+
