@@ -8,7 +8,7 @@ import {
 
 setLogLevel("debug");
 
-// Your Firebase config
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCYYPxLrF0vfZPcuh1b0Z5vJD215qBOyhs",
   authDomain: "impire-be700.firebaseapp.com",
@@ -21,19 +21,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Auth
 const auth = getAuth(app);
 
-// Only disable app verification for testing in local environments (during development)
-if (window.location.hostname === "localhost") {
-  if (auth.settings) {
-    auth.settings.appVerificationDisabledForTesting = true;
-  } else {
-    console.error("auth.settings is undefined");
-  }
-}
-
+// Initialize RecaptchaVerifier
 const setupRecaptcha = () => {
   window.recaptchaVerifier = new RecaptchaVerifier(
     "recaptcha-container",
@@ -89,4 +79,4 @@ const confirmCode = (code) => {
 // Google Sign-In
 const googleProvider = new GoogleAuthProvider();
 
-export {setupRecaptcha, signInWithPhone, confirmCode, googleProvider,auth };
+export { auth,setupRecaptcha, signInWithPhone, confirmCode, googleProvider };
