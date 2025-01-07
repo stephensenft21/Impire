@@ -13,7 +13,8 @@ import { FeedbackProvider } from "../context/FeedbackProvider.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { TrainingPackageProvider } from "../context/TrainingPackageContext.js";
-import dynamic from 'next/dynamic';
+import {MacroProvider} from "../context/MacroContext.js";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router"; // Import useRouter
 const stripePromise = loadStripe("your-publishable-key-here"); // Replace with your Stripe publishable key
 
@@ -37,26 +38,27 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-gray-900 text-white antialiased">
         <AppProvider>
-          <Elements stripe={stripePromise}>
-            <TrainingPackageProvider>
-              <CartProvider>
-                <Navbar />
-                <FeedbackProvider>
-                  <ProductProvider>
-                    <TrainingProvider>
-                      {" "}
-                      <main className="pt-16">{children}</main>{" "}
-                    </TrainingProvider>
-                  </ProductProvider>
-                </FeedbackProvider>
-              </CartProvider>
-            </TrainingPackageProvider>
-          </Elements>
+          <MacroProvider>
+            <Elements stripe={stripePromise}>
+              <TrainingPackageProvider>
+                <CartProvider>
+                  <Navbar />
+                  <FeedbackProvider>
+                    <ProductProvider>
+                      <TrainingProvider>
+                        {" "}
+                        <main className="pt-16">{children}</main>{" "}
+                      </TrainingProvider>
+                    </ProductProvider>
+                  </FeedbackProvider>
+                </CartProvider>
+              </TrainingPackageProvider>
+            </Elements>
+          </MacroProvider>
         </AppProvider>
         <Footer />
         <Analytics />
       </body>
     </html>
-    
   );
 }
