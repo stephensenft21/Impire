@@ -6,24 +6,32 @@ import { usePathname } from "next/navigation";
 import { useAppContext } from "../../context/AppContext";
 import { FaShoppingCart } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import MacroCalculator from "../MacroCalculator/MacroCalculator";
 
 const Navbar = () => {
   const pathname = usePathname();
   const { user, logout, cart } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navLinks = [
-    { href: "/about", label: "About" },
-    { href: "/training", label: "Training" },
-    { href: "/contact", label: "Contact" },
-    { href: "/feedback", label: "Feedback" },
-    { href: "/payment", label: "Payment" },
-    { href: "/merch", label: "Merch" },
-    { href: "/client", label: "Client Transformation" },
-    { href: "/login", label: "Login" },
-
-
-  ];
+  const navLinks = user
+    ? [
+        { href: "/profile", label: "Profile" },
+        { href: "/checkin", label: "Check-In" },
+        { href: "/mealplan", label: "Meal Plan" },
+        { href: "/client", label: "Client Transformation" },
+        { href: "/programs", label: "Programs" },
+        { href: "/rate", label: "Rate Difficulty" },
+        { href: "/questions", label: "Questions/Comments" },
+      ]
+    : [
+        { href: "/about", label: "About" },
+        { href: "/training", label: "Training" },
+        { href: "/contact", label: "Contact" },
+        { href: "/feedback", label: "Feedback" },
+        { href: "/payment", label: "Payment" },
+        { href: "/merch", label: "Merch" },
+        { href: "/login", label: "Login" },
+      ];
 
   const cartItemCount = Array.isArray(cart)
     ? cart.reduce((acc, item) => acc + item.quantity, 0)
@@ -32,12 +40,10 @@ const Navbar = () => {
   return (
     <nav className="bg-black text-white px-6 py-4 shadow-lg fixed w-full z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo */}
         <h1 className="text-xl font-bold">
           <Link href="/">Impire</Link>
         </h1>
 
-        {/* Hamburger Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="block md:hidden text-white focus:outline-none"
@@ -59,7 +65,6 @@ const Navbar = () => {
           </svg>
         </button>
 
-        {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
           {navLinks.map((link) => (
             <motion.li
@@ -79,7 +84,6 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Cart Icon and User Actions */}
         <div className="hidden md:flex items-center gap-4">
           <Link href="/cart">
             <motion.div
@@ -119,10 +123,11 @@ const Navbar = () => {
           ) : (
             <span className="text-gray-300">Please log in</span>
           )}
+
+          <MacroCalculator />
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -151,41 +156,6 @@ const Navbar = () => {
                 </motion.li>
               ))}
             </ul>
-            <div className="px-4 mt-4">
-              <Link href="/cart" className="flex items-center gap-2 mb-4">
-                <motion.div
-                  className="relative"
-                  whileHover={{ scale: 1.2 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FaShoppingCart className="text-blue text-2xl" />
-                  {cartItemCount > 0 && (
-                    <motion.span
-                      className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-2 py-1"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {cartItemCount}
-                    </motion.span>
-                  )}
-                </motion.div>
-                <span className="text-gray-300">Cart</span>
-              </Link>
-              {user ? (
-                <div className="flex flex-col items-start gap-2">
-                  <span className="text-gray-300">Welcome, {user.displayName}</span>
-                  <button
-                    onClick={logout}
-                    className="bg-red-500 w-full px-4 py-2 rounded hover:bg-red-600"
-                  >
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <span className="text-gray-300">Please log in</span>
-              )}
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
